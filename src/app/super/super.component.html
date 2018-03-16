@@ -1,10 +1,111 @@
+<!-- <p>Valores: {{super | json}}</p> -->
+
+
+<!-- BARRA DE MENU PRINCIPAL -->
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+        aria-expanded="false">
+        <span class="sr-only">Menú</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">SUPERMERCADO</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <div class="navbar-form navbar-right">
+
+        <input [(ngModel)]="searchText" class="form-control" placeholder="Buscar producto">
+
+        <div class="nav navbar-nav navbar-right">
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown
+              <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+              <li>
+                <a href="#">Action</a>
+              </li>
+              <li>
+                <a href="#">Another action</a>
+              </li>
+              <li>
+                <a href="#">Something else here</a>
+              </li>
+              <li role="separator" class="divider"></li>
+              <li>
+                <a href="#">Separated link</a>
+              </li>
+            </ul>
+          </li>
+        </div>
+      </div>
+    </div>
+    <!-- /.navbar-collapse -->
+  </div>
+  <!-- /.container-fluid -->
+</nav> <!-- FN BARRA DE MENU PRINCIPAL -->
+
 <div id="listado">
   <h4>Listado de productos</h4>
-  <div *ngFor="let casa of casas [class.active]="casa=="productoSelec">
-    <div class="listaCasas stock col-xs-12 col-sm-5" (click)="seleccionar($event,casa)">
-      <img src={{producto.foto}} alt="{{producto.nombre}}">
-      <span class="nombreCasa">{{producto.nombre}}</span>
-      <span class="precioCasa">{{producto.precio}}€</span>
+  <div class="row">
+    <div *ngFor="let producto of supermercado | filtroProd: searchText" [class.active]="prod==prodSelec">
+
+      <div class="stock col-xs-12 col-md-2 col-sm-2" (click)="seleccionar($event,producto)">
+        <div class="thumbnail">
+          <div [class]="(producto.oferta!=0)? 'iconoOferta' : 'precioOculto'">{{producto.oferta}}%</div>
+          <img src={{producto.foto}} alt="{{producto.nombre}}">
+          <span [class]="(producto.oferta!=0)? 'precioAntes' : 'precioOculto'">{{producto.precio}}€</span>
+          <span [class]="(producto.oferta!=0)? 'precioOferta' : 'precioNormal'">{{producto.precio}}€</span>
+          <br>
+          <span class="precioUnidad">{{producto.precioUnidad}}€ por {{producto.unidad}}</span>
+          <br>
+          <span class="nombreProducto">{{producto.nombre}}</span>
+          <br>
+          <input class="addBtn btn btn-success btn-block" type="button" value="AÑADIR AL CARRITO">
+        </div>
+      </div>
+
+    </div>
+    <!-- Fin div *ngFor -->
+  </div>
+  <!-- Class row -->
+</div>
+<!-- Fin div id=listado -->
+
+<!-- 
+<div class="row">
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <img src={{receta.imagen}} alt="{{receta.nombre}}">
+      <img src="assets/img/gluten_icon.png" *ngIf="!receta.isGlutenFree" alt="Con Gluten" class="logo">
+      <img src="assets/img/gluten_free_icon.png" *ngIf="receta.isGlutenFree" alt="Sin Gluten" class="logo">
+      <div class="caption">
+        <h3>{{receta.nombre | uppercase}}</h3>
+        <p>{{receta.descripcion | slice:0:100}}...</p>
+        <p>
+          <span class="cocinero">{{receta.cocinero}}</span>
+          <span class="label label-danger" (click)="sumarLikes()">Likes {{receta.likes}}</span>
+        </p>
+        <section class="ingredientes">
+          <h4 (click)="showIngre()">Ingredientes
+            <span class="badge">{{receta.ingredientes.length}}</span>
+            <span class="btnBajar glyphicon {{glyphicon}}" aria-hidden="true"></span>
+          </h4>
+          <div id="ingredientes" *ngIf="show">
+            <ol>
+              <li *ngFor="let ingre of receta.ingredientes">
+                {{ingre}}
+              </li>
+            </ol>
+          </div>
+        </section>
+      </div>
     </div>
   </div>
-</div>
+</div> -->

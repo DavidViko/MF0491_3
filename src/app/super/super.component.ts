@@ -11,7 +11,7 @@ import { } from 'events';
 export class SuperComponent implements OnInit {
 
   supermercado: Producto[];
-  prodSelec : Producto;
+  prodSelec: Producto;
   searchText: string;
 
   constructor(public superService: SuperService) {
@@ -25,23 +25,14 @@ export class SuperComponent implements OnInit {
     this.supermercado = this.superService.getAll();
     console.log('Array productos cargado');
   }
+
+  // calcularDescuento(){
+  //   let precioDescuento:number;
+  //   if(oferta)
+  // }
+
 }
-  
 
-  //   //********* Llamadas a los Servicios ******************
-    
-  //   recibirCoche(event){
-  //     console.log("ConcesionarioComponent: Recibimos evento del Componente Hijo %o", event.coche);
-  //     this.coche2 = this.coche1;
-  //     this.coche1 = event.coche;
-      
-  //   }
-  // }
-
-  // seleccionar($event, casa: Casa) {
-  //   this.casaSelec = casa;
-  //   console.log("InmobiliariaComponent: Emitimos evento al Componente hijo %o", this.casaSelec);
-  // }
 
 
 

@@ -7,7 +7,8 @@ export class MOCKS_SUPER {
 		"precioUnidad": 18.50,
 		"foto": "../assets/img/beafeater.jpg",
         "oferta": 0,
-        "unidad": "litro"
+		"unidad": "litro",
+		"cantidad": 0
 	},
 	{
 		"id": 2,
@@ -16,7 +17,8 @@ export class MOCKS_SUPER {
 		"precioUnidad": 18.50,
 		"foto": "../assets/img/beafeater.jpg",
         "oferta": 20,
-        "unidad": "litro"
+		"unidad": "litro",
+		"cantidad": 0
 	},
 	{
 		"id": 3,
@@ -25,7 +27,8 @@ export class MOCKS_SUPER {
 		"precioUnidad": 10.00,
 		"foto": "../assets/img/cafe.jpg",
         "oferta": 0,
-        "unidad": "kilo"
+		"unidad": "kilo",
+		"cantidad": 0
 	},
 	{
 		"id": 4,
@@ -34,7 +37,8 @@ export class MOCKS_SUPER {
 		"precioUnidad": 16.00,
 		"foto": "../assets/img/cafe.jpg",
         "oferta": 20,
-        "unidad": "kilo"
+		"unidad": "kilo",
+		"cantidad": 0
 	},
 	{
 		"id": 5,
@@ -43,7 +47,8 @@ export class MOCKS_SUPER {
 		"precioUnidad": 1.00,
 		"foto": "../assets/img/leche.jpg",
         "oferta": 0,
-        "unidad": "litro"
+		"unidad": "litro",
+		"cantidad": 0
 	},
 	{
 		"id": 6,
@@ -52,7 +57,8 @@ export class MOCKS_SUPER {
 		"precioUnidad": 1.00,
 		"foto": "../assets/img/leche.jpg",
         "oferta": 30,
-        "unidad": "litro"
+		"unidad": "litro",
+		"cantidad": 0
 	},
 	{
 		"id": 7,
@@ -61,7 +67,8 @@ export class MOCKS_SUPER {
 		"precioUnidad": 6.40,
 		"foto": "../assets/img/pimientos.jpg",
         "oferta": 0,
-        "unidad": "kilo"
+		"unidad": "kilo",
+		"cantidad": 0
 	},
 	{
 		"id": 8,
@@ -70,7 +77,8 @@ export class MOCKS_SUPER {
 		"precioUnidad": 0.90,
 		"foto": "../assets/img/lechuga.jpg",
         "oferta": 0,
-        "unidad": "unidad"
+		"unidad": "unidad",
+		"cantidad": 0
 	},
 	{
 		"id": 9,
@@ -79,7 +87,8 @@ export class MOCKS_SUPER {
 		"precioUnidad": 9.60,
 		"foto": "../assets/img/principe.png",
         "oferta": 0,
-        "unidad": "kilo"
+		"unidad": "kilo",
+		"cantidad": 0
 	},
 	{
 		"id": 10,
@@ -88,7 +97,8 @@ export class MOCKS_SUPER {
 		"precioUnidad": 16.00,
 		"foto": "../assets/img/mejillones.jpg",
         "oferta": 0,
-        "unidad": "kilo"
+		"unidad": "kilo",
+		"cantidad": 0
     }
 ]`;
 

@@ -40,7 +40,7 @@
     }
     
     .precioOferta{
-        font-size:1em;
+        font-size:1.2em;
         color:red;
     }
     .precioUnidad{
@@ -62,5 +62,23 @@
         font-weight: 600;
         font-size: 1.2em;
     }
+
+    .botones-cantidades {
+        position: absolute;
+        bottom:50px;
+        right:15px;
+        border: 1px solid #BBB; 
+        border-radius: 2rem;
+        padding: 0.6rem .25rem;
+        margin: 0 auto;
+        display: inline-block;
+        vertical-align: middle;
+        background-color: #BBB;
+      }
+      .boton-cantidad{
+        background-color: #BBB;
+        border-radius:50%;
+      }
+
 }
 

@@ -25,12 +25,6 @@ export class SuperComponent implements OnInit {
     this.supermercado = this.superService.getAll();
     console.log('Array productos cargado');
   }
-
-  // calcularDescuento(){
-  //   let precioDescuento:number;
-  //   if(oferta)
-  // }
-
 }
 
 

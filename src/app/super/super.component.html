@@ -1,0 +1,10 @@
+<div id="listado">
+  <h4>Listado de productos</h4>
+  <div *ngFor="let casa of casas [class.active]="casa=="productoSelec">
+    <div class="listaCasas stock col-xs-12 col-sm-5" (click)="seleccionar($event,casa)">
+      <img src={{producto.foto}} alt="{{producto.nombre}}">
+      <span class="nombreCasa">{{producto.nombre}}</span>
+      <span class="precioCasa">{{producto.precio}}€</span>
+    </div>
+  </div>
+</div>

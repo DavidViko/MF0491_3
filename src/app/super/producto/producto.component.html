@@ -1,4 +1,4 @@
-<div class="stock col-xs-12 col-md-2 col-sm-2" (click)="seleccionar($event,producto)">
+<div class="stock col-xs-12 col-sm-3 col-md-2" (click)="seleccionar($event,producto)">
   <div class="thumbnail">
     <div [class]="(producto.oferta!=0)? 'iconoOferta' : 'precioOculto'">{{producto.oferta}}%</div>
     <img src={{producto.foto}} alt="{{producto.nombre}}">

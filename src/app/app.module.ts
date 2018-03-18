@@ -6,6 +6,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { SuperComponent } from './super/super.component';
 import { ProductoComponent } from './super/producto/producto.component';
+import { CarritoComponent } from './super/carrito/carrito.component';
 
 //Servicios
 import { SuperService } from './providers/super.service';
@@ -14,11 +15,13 @@ import { SuperService } from './providers/super.service';
 import { FilterProductosPipe } from './pipes/filtroProd';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
     SuperComponent,
     ProductoComponent,
+    CarritoComponent,
     FilterProductosPipe
   ],
   imports: [

@@ -15,17 +15,17 @@ export class ProductoComponent implements OnInit {
   cantidad: number;
 
   constructor() {
-    console.log("Constructor Producto");
+    console.log('Constructor Producto');
   }
 
   ngOnInit() {
-    console.log("onInit Producto");
+    console.log('onInit Producto');
     this.calcularPrecioDescuento();
     this.cantidad = 1;
   }
 
   calcularPrecioDescuento() {
-    this.precioConOferta = this.producto.precio - (this.producto.precio * this.producto.oferta / 100);
+    this.precioConOferta = this.producto.precio -(this.producto.precio * this.producto.oferta / 100);
   }
 
   /**
@@ -46,10 +46,10 @@ export class ProductoComponent implements OnInit {
   }
 
   /**
-   * Emite un evento al SupermercadoComponent (padre) con el producto y sus unidades
+   * Emite un evento al padre el producto y sus unidades
    */
   agregarCarrito() {
-    console.log('ProductoComponent addToCart(producto : %o y unidades : %s', this.producto, this.cantidad);
+    console.log('ProductoComponent agregarCarrito');
 
     this.prodAgregado.emit({
       'producto': this.producto,

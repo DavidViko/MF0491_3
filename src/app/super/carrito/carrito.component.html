@@ -1,23 +1,18 @@
-<!-- <div class="listaCarrito row">
-  <div class="imagen col-xs-1 col-sm-1 col-md-1">
-    <img src="{{prodCarrito.foto}}" alt="{{prodCarrito.nombre}}">
+<span class="item-left">
+  <img src="{{prodCarrito.foto}}" alt="{{prodCarrito.nombre}}">
+  <span class="item-info">
+    <span class="precioCarrito">{{prodCarrito.precio}} €</span>
+    <span class="nombreCarrito">{{prodCarrito.nombre}}</span>
+    <span class="unidadesCarrito">{{prodCarrito.unidades}}</span>
+  </span>
+</span>
+<span class="item-right">
+  <div class="botones-cantidades btn-group" role="group">
+    <button class="boton-cantidad" type="button" data-stepper-direction="down" (click)="restarCantidad()">–</button>
+    <input size="4" type="number" value="1" pattern="[0-9]" min="0" max="999" [(ngModel)]="cantidad">
+    <button class="boton-cantidad" data-stepper-direction="up" type="button" (click)="sumarCantidad()">+</button>
   </div>
-  <div class="datos col-xs-5 col-sm-5 col-md-5">
-    <span>{{prodCarrito.precio}} €</span>
-    <span>{{prodCarrito.nombre}}</span>
-  </div>
-  <div class="unidades col-xs-1 col-sm-1 col-md-1">
-    <span>{{prodCarrito.unidades}}</span>
-  </div>
-</div> -->
-
-<!-- 
-<span class="listaCarrito">
-  <span class="item-left"> -->
-      <img src="{{prodCarrito.foto}}" alt="{{prodCarrito.nombre}}">
-      <span class="item-info">
-          <span class="precioCarrito">{{prodCarrito.precio}} €</span>
-          <span class="nombreCarrito">{{prodCarrito.nombre}}</span>
-          <span class="unidadesCarrito">{{prodCarrito.unidades}}</span>
-      </span>
-  
+  <button class="btn btn-xs">
+    <i class="fa fa-trash"></i>
+  </button>
+</span>

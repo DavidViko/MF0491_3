@@ -15,7 +15,6 @@ export class SuperComponent implements OnInit {
   prodSelec: Producto;
   searchText: string;
 
-  cantidad: number;
   carrito: Producto[];
   subtotal: number;
   descuentos: number;
@@ -25,7 +24,6 @@ export class SuperComponent implements OnInit {
     console.log("Constructor Super");
     this.supermercado = [];
     this.prodSelec = new Producto('', 0);
-    this.cantidad = 1;
     this.carrito = [];
     this.subtotal = 0;
     this.descuentos = 0;

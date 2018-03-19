@@ -7,13 +7,14 @@ import { Producto } from '../../../model/producto';
   styleUrls: ['./carrito.component.scss']
 })
 export class CarritoComponent implements OnInit {
-  
+
   // Atributos
   @Input('prodCarrito') prodCarrito: Producto;
-  
+  cantidad: number;
 
   constructor() {
-    this.prodCarrito = new Producto('',null);
+    this.prodCarrito = new Producto('', null);
+    this.cantidad = 1;
   }
 
   ngOnInit() {
@@ -33,7 +34,7 @@ export class CarritoComponent implements OnInit {
    */
   sumarCantidad() {
     this.prodCarrito.cantidad = this.prodCarrito.cantidad + 1
-    
+
   }
 
 }

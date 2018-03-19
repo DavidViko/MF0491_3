@@ -1,5 +1,5 @@
 nav{
-     height:50px;
+    height:50px;
 
      .navbar-brand{
         text-align: right;
@@ -71,6 +71,9 @@ nav{
             z-index:1;
             left:37%;
         }
+        .divisor{
+            margin-top:30px;
+        }
     }
 
     .listaCarrito{
@@ -89,8 +92,35 @@ nav{
         }
     }
     
+    .botonesCompra {
+        display: flex;
+    
+        .vaciarCarrito {
+          height: 50px;
+          width: 50%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          color: rgb(84, 206, 79);
+          background-color: #fff;
+          &:hover {
+            cursor: pointer;
+          }
+        }
+        .tramitarCompra {
+          height: 50px;
+          width: 50%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background-color: rgb(84, 206, 79);
+          color: white;
+          &:hover {
+            cursor: pointer;
+          }
+        }
+    }
 }
-
 
 .thumbnail{
     border: 1px solid #AAA;

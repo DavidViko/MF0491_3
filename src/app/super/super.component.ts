@@ -54,6 +54,14 @@ export class SuperComponent implements OnInit {
     this.total = this.subtotal - this.descuentos;
   }
 
+  // Vacío  carrito 
+  vaciarCarrito() {    
+    this.carrito = [];
+    this.subtotal = 0;
+    this.descuentos = 0;
+    this.total = 0;
+  }
+
 
 }
 

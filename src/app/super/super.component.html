@@ -28,6 +28,7 @@
             <li *ngFor="let prodCarrito of carrito">
               <div class="listaCarrito">
                 <app-carrito [prodCarrito]="prodCarrito"></app-carrito>
+                <li role="separator" class="divisor"></li>
               </div>
             </li>
             <li role="separator" class="divider"></li>
@@ -44,14 +45,20 @@
                 </p>
               </div>
             </li>
+            <div class="botonesCompra">
+              <div class="vaciarCarrito" (click)="vaciarCarrito()">
+                <span>Vaciar Cesta <i class="glyphicon glyphicon-trash"></i> </span>
+              </div>
+              <div class="tramitarCompra">
+                Realizar Compra
+              </div>
+            </div>
           </ul>
-        </li>
-      </div>
-    </div>
-  </div>
-  <!-- /.container-fluid -->
-</nav>
-<!-- FN BARRA DE MENU PRINCIPAL -->
+        </li> <!--dropdown-->
+      </div> <!--nav navbar-nav navbar-right-->
+    </div> <!-- fin carrito col-xs-12 col-sm-2 col-md-3 -->
+  </div> <!-- /.container-fluid -->
+</nav> <!-- FN BARRA DE MENU PRINCIPAL -->
 
 <div id="listado">
   <h4>Listado de productos</h4>

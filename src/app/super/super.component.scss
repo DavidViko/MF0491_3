@@ -1,60 +1,4 @@
-
-// nav.clearfix ul li{
-//     min-width: 15%;
-//     margin: auto;
-// }
-
-// nav#main ul.nav li a {
-//     z-index: 999;
-//     list-style-type: none;
-//     margin: 0;
-//     padding: 0;
-//     background-color: #272727;
-// }
-
-// nav#main ul.nav > li {
-//     display: inline-block;
-// }
-
-// nav#main ul.nav li ul {
-//     display: none;
-//     position: absolute;
-//     min-width: 15%;
-//     padding: 0;
-//     margin: 0;
-// }
-
-// nav#main ul.nav li ul li {
-//     display: block;
-// }
-
-// nav#main ul.nav li a {
-//     display: block;
-//     color: white;
-//     text-align: center;
-//     padding: 10px 15px;
-//     text-decoration: none;
-// }
-
-// nav#main ul.nav li:hover > ul {
-//     display: block;
-// }
-
-#carrito{
-    background-color:rgb(118, 240, 118);
-    width:100%;
-    text-align: right;
-    font-size:1.5em;
-    color:#FFF;
-    &:hover{
-        background-color:rgb(160, 216, 160);
-    }
-
-}
 nav{
-    // background-color:rgb(56, 56, 56);
-    // margin-top:0px;
-    // padding:5px;
      height:50px;
 
      .navbar-brand{
@@ -91,23 +35,33 @@ nav{
     #carrito{
         background-color:rgb(118, 240, 118);
         height:35px;
+        width:100%;
         text-align: right;
         font-size:1.5em;
         &:hover{
             background-color:rgb(184, 253, 184);
         }
-        
+        .item-right{
+            font:#000;
+        }
+        a.dropdown-toggle{
+            color:#232323;
+        }
+
+
         a.dropdown-toggle[aria-expanded="true"]{
             background-image:none;
             background-color: rgb(184, 253, 184);
         }
 
-        .total-carrito, li{
+        .facturaFinal, li{
             color:black;
         }
 
+        img{
+            float:left;
+        }
         span{
-            color:white;
             i{
                 position: relative;
             }
@@ -118,7 +72,22 @@ nav{
             left:37%;
         }
     }
-    
+
+    .listaCarrito{
+        margin-bottom: 10px;
+    }
+    .facturaFinal{
+        padding:10px;
+        color:#000;
+        font-size: 1em;
+        .descuentos{
+            color:red;
+        }
+        .total{
+            font-weight: 600;
+            font-size: 1.2em;
+        }
+    }
     
 }
 

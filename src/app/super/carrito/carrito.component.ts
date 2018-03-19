@@ -18,5 +18,23 @@ export class CarritoComponent implements OnInit {
 
   ngOnInit() {
   }
+
+  /**
+   * Disminuir la cantidad del producto
+   */
+  restarCantidad() {
+    if (this.prodCarrito.cantidad > 1) {
+      this.prodCarrito.cantidad = this.prodCarrito.cantidad - 1;
+    }
+  }
+
+  /**
+   * Incrementar la cantidad del producto
+   */
+  sumarCantidad() {
+    this.prodCarrito.cantidad = this.prodCarrito.cantidad + 1
+    
+  }
+
 }
 

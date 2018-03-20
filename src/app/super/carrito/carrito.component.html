@@ -1,18 +1,43 @@
-<div class="item-left">
-  <img src="{{prodCarrito.foto}}" alt="{{prodCarrito.nombre}}">
-  <span class="item-info">
-    <span class="precioCarrito">{{prodCarrito.precio}} €</span>
-    <span class="nombreCarrito">{{prodCarrito.nombre}}</span>
-    <span class="unidadesCarrito">{{prodCarrito.unidades}}</span>
-  </span>
-</div>
-<div class="item-right">
-  <div class="botones-cantidades btn-group" role="group">
-    <button class="boton-cantidad" type="button" data-stepper-direction="down" (click)="restarCantidad()">–</button>
-    <input size="4" type="number" value="1" pattern="[0-9]" min="0" max="999" [(ngModel)]="cantidad">
-    <button class="boton-cantidad" data-stepper-direction="up" type="button" (click)="sumarCantidad()">+</button>
+<div *ngFor="let prodCarrito of carrito.productos">
+  <div class="listaCarrito row">
+    <div class="foto col-xs-12 col-md-1 col-sm-1">
+      <img src="{{prodCarrito.foto}}" alt="{{prodCarrito.nombre}}">
+    </div>
+    <div class="col-xs-12 col-md-6 col-sm-6">
+      <span class="datosProductos">
+        <span [class]="(prodCarrito.oferta==0)?'precioOculto':'precioNormal'">{{prodCarrito.precio | number:'.2-2'}}€</span>
+        <span [class]="(prodCarrito.oferta!=0)?'precioOculto':'precioNormal'">{{prodCarrito.precioConOferta | number:'.2-2'}}€</span>
+        <br>
+        <span class="nombreCarrito">{{prodCarrito.nombre}}</span>
+        <span class="unidadesCarrito">{{prodCarrito.unidades}}</span>
+      </span>
+    </div>
+    <div class="item-right col-xs-12 col-md-3 col-sm-3">
+      <div class="botones-cantidades btn-group" role="group">
+        <button class="boton-cantidad" type="button" data-stepper-direction="down" (click)="restarCantidad(producto)">–</button>
+        <input size="2" type="number" value="{{prodCarrito.cantidad}}" pattern="[0-9]" min="0" max="999">
+        <button class="boton-cantidad" data-stepper-direction="up" type="button" (click)="sumarCantidad(producto)">+</button>
+      </div>
+    </div>
+    <div class="btnEliminar col-xs-12 col-md-1 col-sm-1">
+      <button class="btn btn-default" (click)="quitarProdCarro(producto.id)">
+        <i class="fa fa-trash"></i>
+      </button>
+    </div>
   </div>
-  <button class="btn btn-xs">
-    <i class="fa fa-trash"></i>
-  </button>
 </div>
+<div role="separator" class="divisor"></div>
+<div>
+  <div class="facturaFinal">
+    <p class="subtotal">Subtotal:
+      <span>{{carrito.subtotal | number:'.2-2'}} €</span>
+    </p>
+    <p class="descuentos">Descuentos:
+      <span>{{carrito.descuentos | number:'.2-2'}} €</span>
+    </p>
+    <p class="total">Total:
+      <span>{{carrito.total | number:'.2-2'}} €</span>
+    </p>
+  </div>
+</div>
+

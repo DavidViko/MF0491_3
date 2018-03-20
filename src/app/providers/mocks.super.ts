@@ -7,8 +7,7 @@ export class MOCKS_SUPER {
 		"precioUnidad": 18.50,
 		"foto": "../assets/img/beafeater.jpg",
         "oferta": 0,
-		"unidad": "litro",
-		"cantidad": 0
+		"unidad": "litro"
 	},
 	{
 		"id": 2,
@@ -17,8 +16,7 @@ export class MOCKS_SUPER {
 		"precioUnidad": 18.50,
 		"foto": "../assets/img/beafeater.jpg",
         "oferta": 20,
-		"unidad": "litro",
-		"cantidad": 0
+		"unidad": "litro"
 	},
 	{
 		"id": 3,
@@ -27,18 +25,16 @@ export class MOCKS_SUPER {
 		"precioUnidad": 10.00,
 		"foto": "../assets/img/cafe.jpg",
         "oferta": 0,
-		"unidad": "kilo",
-		"cantidad": 0
+		"unidad": "kilo"
 	},
 	{
 		"id": 4,
-		"nombre": "Café Marcilla Gran Arroma envase 200gr.",
-		"precio": 2.70,
-		"precioUnidad": 16.00,
-		"foto": "../assets/img/cafe.jpg",
-        "oferta": 20,
-		"unidad": "kilo",
-		"cantidad": 0
+		"nombre": "Zumo de naranja Zumosol. Con pulpa. 1 litro",
+		"precio": 1.38,
+		"precioUnidad": 1.38,
+		"foto": "../assets/img/zumo.jpg",
+        "oferta": 10,
+		"unidad": "litro"
 	},
 	{
 		"id": 5,
@@ -46,29 +42,26 @@ export class MOCKS_SUPER {
 		"precio": 1.50,
 		"precioUnidad": 1.00,
 		"foto": "../assets/img/leche.jpg",
-        "oferta": 0,
-		"unidad": "litro",
-		"cantidad": 0
+        "oferta": 25,
+		"unidad": "litro"
 	},
 	{
 		"id": 6,
-		"nombre": "Leche Central Leche Asturiana Botella 1,5 litros",
-		"precio": 1.50,
-		"precioUnidad": 1.00,
-		"foto": "../assets/img/leche.jpg",
-        "oferta": 30,
-		"unidad": "litro",
-		"cantidad": 0
+		"nombre": "Manzanas Reineta. Certificado con Euskolabel",
+		"precio": 1.24,
+		"precioUnidad": 1.24,
+		"foto": "../assets/img/manzanas.jpg",
+        "oferta": 5,
+		"unidad": "kilo"
 	},
 	{
 		"id": 7,
 		"nombre": "Pimientos Celorrio Carne de pimientos choriceros 150gr.",
-		"precio": 1.30,
-		"precioUnidad": 6.40,
+		"precio": 1.42,
+		"precioUnidad": 9.46,
 		"foto": "../assets/img/pimientos.jpg",
         "oferta": 0,
-		"unidad": "kilo",
-		"cantidad": 0
+		"unidad": "kilo"
 	},
 	{
 		"id": 8,
@@ -77,8 +70,7 @@ export class MOCKS_SUPER {
 		"precioUnidad": 0.90,
 		"foto": "../assets/img/lechuga.jpg",
         "oferta": 0,
-		"unidad": "unidad",
-		"cantidad": 0
+		"unidad": "unidad"
 	},
 	{
 		"id": 9,
@@ -87,8 +79,7 @@ export class MOCKS_SUPER {
 		"precioUnidad": 9.60,
 		"foto": "../assets/img/principe.png",
         "oferta": 0,
-		"unidad": "kilo",
-		"cantidad": 0
+		"unidad": "kilo"
 	},
 	{
 		"id": 10,
@@ -97,8 +88,7 @@ export class MOCKS_SUPER {
 		"precioUnidad": 16.00,
 		"foto": "../assets/img/mejillones.jpg",
         "oferta": 0,
-		"unidad": "kilo",
-		"cantidad": 0
+		"unidad": "kilo"
     }
 ]`;
 

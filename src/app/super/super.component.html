@@ -1,70 +1,75 @@
 <!-- <p>Valores: {{super | json}}</p> -->
 
 <!-- BARRA DE MENU PRINCIPAL -->
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="titulo col-xs-12 col-sm-6 col-md-6">
-      <span class="navbar-brand">SUPERMERCADO</span>
+<nav class="row menuPrincipal">
+  <div class="titulo col-xs-12 col-sm-6 col-md-6 col-lg-6">
+    <span class="titulo">SUPERMERCADO</span>
+  </div>
+  <div class="buscador col-xs-12 col-sm-4 col-md-4 col-lg-4">
+    <div class="input-group">
+      <input [(ngModel)]="searchText" class="form-control" placeholder="Buscar producto">
+      <span class="input-group-btn">
+        <button class="btn btn-default" type="button">
+          <i class="fa fa-search" aria-hidden="false"></i>
+        </button>
+      </span>
     </div>
-    <div class="buscador col-xs-12 col-sm-4 col-md-3">
-      <div class="input-group">
-        <input [(ngModel)]="searchText" class="form-control" placeholder="Buscar producto">
-        <span class="input-group-btn">
-          <button class="btn btn-default" type="button">
-            <i class="fa fa-search" aria-hidden="false"></i>
-          </button>
-        </span>
+  </div>
+  <div class="carrito col-xs-12 col-sm-2 col-md-2 col-lg-2">
+    <div class="dropdown">
+      <div class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+        <span class="badge">{{carrito.numProductos}}</span>
+        <i class="fa fa-shopping-basket fa-2x" aria-hidden="true"></i>
+        <span class="total-navegador">{{carrito.precio | number:'.2-2'}} €</span>
       </div>
+      <div class="dropdown-menu">
+
+        <app-carrito [carrito]="carrito"></app-carrito> <!-- Elemento hijo carrito -->
+        
+        <div class="botonesCompra">
+          <div class="vaciarCarrito" (click)="vaciarCarrito()">
+            <span>VACIAR CESTA
+              <i class="glyphicon glyphicon-trash"></i>
+            </span>
+          </div>
+          <div class="tramitarCompra">
+            VER / TRAMITAR COMPRA
+          </div>
+        </div>
+      </div>
+      <!--dropdown-menu-->
     </div>
-    <div class="carrito col-xs-12 col-sm-2 col-md-3">
-      <div class="nav navbar-nav navbar-right" id="carrito">
-        <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-            <span class="badge">{{carrito.length}}</span>
-            <span class="total-navegador">{{total | number:'.2-2'}} €</span>
-          </a>
-          <ul class="dropdown-menu">
-            <li *ngFor="let prodCarrito of carrito">
-              <div class="listaCarrito">
-                <app-carrito [prodCarrito]="prodCarrito"></app-carrito>
-                <li role="separator" class="divisor"></li>
-              </div>
-            </li>
-            <li role="separator" class="divider"></li>
-            <li>
-              <div class="facturaFinal">
-                <p class="subtotal">Subtotal:
-                  <span>{{subtotal | number:'.2-2'}} €</span>
-                </p>
-                <p class="descuentos">Descuentos:
-                  <span>{{descuentos | number:'.2-2'}} €</span>
-                </p>
-                <p class="total">Total:
-                  <span>{{total | number:'.2-2'}} €</span>
-                </p>
-              </div>
-            </li>
-            <div class="botonesCompra">
-              <div class="vaciarCarrito" (click)="vaciarCarrito()">
-                <span>Vaciar Cesta <i class="glyphicon glyphicon-trash"></i> </span>
-              </div>
-              <div class="tramitarCompra">
-                Realizar Compra
-              </div>
-            </div>
-          </ul>
-        </li> <!--dropdown-->
-      </div> <!--nav navbar-nav navbar-right-->
-    </div> <!-- fin carrito col-xs-12 col-sm-2 col-md-3 -->
-  </div> <!-- /.container-fluid -->
-</nav> <!-- FN BARRA DE MENU PRINCIPAL -->
+    <!-- dropdown -->
+  </div>
+  <!-- fin carrito col-xs-12 col-sm-2 col-md-3 -->
+</nav>
+<!-- FN BARRA DE MENU PRINCIPAL -->
 
 <div id="listado">
   <h4>Listado de productos</h4>
   <div class="row">
     <div *ngFor="let producto of supermercado | filtroProd: searchText">
-      <app-producto [producto]="producto" (prodAgregado)='agregarCarrito($event)'></app-producto>
+      <div class="stock col-xs-12 col-sm-3 col-md-2">
+        <div class="thumbnail">
+          <div [class]="(producto.oferta!=0)? 'iconoOferta' : 'precioOculto'">{{producto.oferta}}%</div>
+          <img src={{producto.foto}} alt="{{producto.nombre}}">
+          <span [class]="(producto.oferta!=0)? 'precioAntes' : 'precioOculto'">{{producto.precio | number:'.2-2'}}€</span>
+          <span [class]="(producto.oferta!=0)? 'precioConOferta' : 'precioNormal'">{{producto.precioConOferta | number:'.2-2'}}€</span>
+          <br>
+          <span class="precioUnidad">{{producto.precioUnidad | number:'.2-2'}}€ por {{producto.unidad}}</span>
+          <br>
+          <span class="nombreProducto">{{producto.nombre}}</span>
+          <br>
+          <!-- Botones añadir unidades del producto -->
+          <div class="botones-cantidades btn-group" role="group">
+            <button class="boton-cantidad" type="button" data-stepper-direction="down" (click)="restarCantidad(producto)">–</button>
+            <input size="4" type="number" pattern="[0-9]" min="0" max="999" value={{producto.cantidad}}>
+            <button class="boton-cantidad" data-stepper-direction="up" type="button" (click)="sumarCantidad(producto)">+</button>
+          </div>
+
+          <input class="addBtn btn btn-success btn-block" type="button" value="AÑADIR AL CARRITO" (click)="agregarCarrito(producto)">
+        </div>
+      </div>
     </div>
     <!-- Fin div *ngFor -->
   </div>

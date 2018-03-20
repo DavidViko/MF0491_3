@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Producto } from '../../../model/producto';
+import { Carrito } from '../../../model/carrito';
 
 @Component({
   selector: 'app-carrito',
@@ -9,33 +9,21 @@ import { Producto } from '../../../model/producto';
 export class CarritoComponent implements OnInit {
 
   // Atributos
-  @Input('prodCarrito') prodCarrito: Producto;
+  @Input('carrito') carrito: Carrito;
   cantidad: number;
+  subtotal: number;
+  descuentos: number;
+  total: number;
+  precioConOferta: number;
 
   constructor() {
-    this.prodCarrito = new Producto('', null);
+    this.carrito = new Carrito();
     this.cantidad = 1;
+    
   }
 
   ngOnInit() {
   }
-
-  /**
-   * Disminuir la cantidad del producto
-   */
-  restarCantidad() {
-    if (this.prodCarrito.cantidad > 1) {
-      this.prodCarrito.cantidad = this.prodCarrito.cantidad - 1;
-    }
-  }
-
-  /**
-   * Incrementar la cantidad del producto
-   */
-  sumarCantidad() {
-    this.prodCarrito.cantidad = this.prodCarrito.cantidad + 1
-
-  }
-
+  
 }
 

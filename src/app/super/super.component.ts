@@ -10,24 +10,18 @@ import { } from 'events';
   styleUrls: ['./super.component.scss']
 })
 export class SuperComponent implements OnInit {
-
   supermercado: Producto[];
   prodSelec: Producto;
   searchText: string;
-
-  carrito: Producto[];
-  subtotal: number;
-  descuentos: number;
-  total: number;
+  carrito: Carrito;
+  precioConOferta: number;
+  cantidad: number;
 
   constructor(public superService: SuperService) {
     console.log("Constructor Super");
     this.supermercado = [];
     this.prodSelec = new Producto('', 0);
-    this.carrito = [];
-    this.subtotal = 0;
-    this.descuentos = 0;
-    this.total = 0;
+    this.carrito = new Carrito();
   }
 
   ngOnInit() {
@@ -37,31 +31,44 @@ export class SuperComponent implements OnInit {
   }
 
   /**
-   * Añade el producto recibido de ProductoComponent tantas veces se especificó en sus unidades
-   * @param event : objeto recibido con el producto y su número de unidades
+   * Disminuir la cantidad del producto
    */
-  agregarCarrito(event) {
-    console.log('SupermercadoComponent agregarCarrito %o', event);
-
-    for (let i = 0; i < event.unidades; i++) {
-      this.carrito.push(event.producto);
-      if (event.producto.oferta != 0) {
-        this.descuentos = this.descuentos + event.producto.precio * (event.producto.oferta / 100);
-      }
-      this.subtotal = this.subtotal + event.producto.precio;
-
+  restarCantidad(producto: Producto) {
+    if (producto.cantidad > 1) {
+      producto.cantidad = producto.cantidad - 1;
     }
-    this.total = this.subtotal - this.descuentos;
   }
 
-  // Vacío  carrito 
-  vaciarCarrito() {    
-    this.carrito = [];
-    this.subtotal = 0;
-    this.descuentos = 0;
-    this.total = 0;
+  /**
+   * Incrementar la cantidad del producto
+   */
+  sumarCantidad(producto: Producto) {
+    producto.cantidad = producto.cantidad + 1;
   }
 
+  /**
+     * Añade el producto recibido de ProductoComponent tantas veces se especificó en sus unidades
+     * @param producto : se pasa el producto que se va a añadir al carrito
+     */
+  agregarCarrito(producto: Producto) {
+    console.log('SupermercadoComponent agregarCarrito %o', producto);
+    this.carrito.productos.push(producto);
+    this.carrito.subtotal = this.carrito.subtotal + producto.precio * producto.cantidad;
+    this.carrito.numProductos = this.carrito.numProductos + producto.cantidad;
+    if (producto.oferta != 0) {
+      this.precioConOferta = producto.precio - (producto.precio * producto.oferta / 100);
+      this.carrito.precio = this.carrito.precio + this.precioConOferta * producto.cantidad;
+      this.carrito.descuentos = this.carrito.descuentos + producto.precio * producto.oferta / 100;
+    } else {
+      this.carrito.precio = this.carrito.precio + producto.precio * producto.cantidad;
+    }
+    this.carrito.total = this.carrito.subtotal - this.carrito.descuentos;
+  }
+
+    // Vacío  carrito 
+    vaciarCarrito() {
+    this.carrito = new Carrito();
+    }
 
 }
 

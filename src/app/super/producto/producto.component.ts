@@ -25,7 +25,7 @@ export class ProductoComponent implements OnInit {
   }
 
   calcularPrecioDescuento() {
-    this.precioConOferta = this.producto.precio -(this.producto.precio * this.producto.oferta / 100);
+    this.precioConOferta = this.producto.precio - (this.producto.precio * this.producto.oferta / 100);
   }
 
   /**
@@ -41,8 +41,7 @@ export class ProductoComponent implements OnInit {
    * Incrementar la cantidad del producto
    */
   sumarCantidad() {
-    this.cantidad = this.cantidad + 1
-    
+    this.cantidad = this.cantidad + 1    
   }
 
   /**
@@ -50,11 +49,8 @@ export class ProductoComponent implements OnInit {
    */
   agregarCarrito() {
     console.log('ProductoComponent agregarCarrito');
-
-    this.prodAgregado.emit({
-      'producto': this.producto,
-      'unidades': this.cantidad
-    });
+    this.producto.cantidad = this.cantidad ;
+    this.prodAgregado.emit({'producto': this.producto});
   }
 
 

@@ -14,13 +14,13 @@
     </div>
     <div class="item-right col-xs-12 col-md-3 col-sm-3">
       <div class="botones-cantidades btn-group" role="group">
-        <button class="boton-cantidad" type="button" data-stepper-direction="down" (click)="restarCantidad(producto)">–</button>
-        <input size="2" type="number" value="{{prodCarrito.cantidad}}" pattern="[0-9]" min="0" max="999">
-        <button class="boton-cantidad" data-stepper-direction="up" type="button" (click)="sumarCantidad(producto)">+</button>
+        <button class="boton-cantidad" type="button" data-stepper-direction="down" (click)="restarCantidad(prodCarrito)">–</button>
+        <input size="2" type="number" value="{{prodCarrito.cantidad}}" pattern="[0-9]" min="0" max="99">
+        <button class="boton-cantidad" data-stepper-direction="up" type="button" (click)="sumarCantidad(prodCarrito)">+</button>
       </div>
     </div>
     <div class="btnEliminar col-xs-12 col-md-1 col-sm-1">
-      <button class="btn btn-default" (click)="quitarProdCarro(producto.id)">
+      <button class="btn btn-default" (click)="quitarProdCarro(prodCarrito.id)">
         <i class="fa fa-trash"></i>
       </button>
     </div>

@@ -1,12 +1,12 @@
-<div *ngFor="let prodCarrito of carrito.productos">
+<div *ngFor="let prodCarrito of carrito">
   <div class="listaCarrito row">
     <div class="foto col-xs-12 col-md-1 col-sm-1">
       <img src="{{prodCarrito.foto}}" alt="{{prodCarrito.nombre}}">
     </div>
     <div class="col-xs-12 col-md-6 col-sm-6">
       <span class="datosProductos">
-        <span [class]="(prodCarrito.oferta==0)?'precioOculto':'precioNormal'">{{prodCarrito.precio | number:'.2-2'}}€</span>
-        <span [class]="(prodCarrito.oferta!=0)?'precioOculto':'precioNormal'">{{prodCarrito.precioConOferta | number:'.2-2'}}€</span>
+        <span [class]="(prodCarrito.oferta!=0)?'precioAntes' : 'precioOculto'">{{prodCarrito.precio | number:'.2-2'}}€</span>
+        <span [class]="(prodCarrito.oferta!=0)?'precioConOferta' : 'precioNormal'">{{prodCarrito.precioConOferta | number:'.2-2'}}€</span>
         <br>
         <span class="nombreCarrito">{{prodCarrito.nombre}}</span>
         <span class="unidadesCarrito">{{prodCarrito.unidades}}</span>
@@ -14,9 +14,9 @@
     </div>
     <div class="item-right col-xs-12 col-md-3 col-sm-3">
       <div class="botones-cantidades btn-group" role="group">
-        <button class="boton-cantidad" type="button" data-stepper-direction="down" (click)="restarCantidad(prodCarrito)">–</button>
-        <input size="2" type="number" value="{{prodCarrito.cantidad}}" pattern="[0-9]" min="0" max="99">
-        <button class="boton-cantidad" data-stepper-direction="up" type="button" (click)="sumarCantidad(prodCarrito)">+</button>
+        <button class="boton-cantidad" type="button" data-stepper-direction="down" (click)="restarCantidad(prodCarrito.id)">–</button>
+        <input class="cantidad" size="2" type="number" value="{{prodCarrito.cantidad}}" pattern="[0-9]" min="0" max="99" readonly>
+        <button class="boton-cantidad" data-stepper-direction="up" type="button" (click)="sumarCantidad(prodCarrito.id)">+</button>
       </div>
     </div>
     <div class="btnEliminar col-xs-12 col-md-1 col-sm-1">
@@ -30,13 +30,13 @@
 <div>
   <div class="facturaFinal">
     <p class="subtotal">Subtotal:
-      <span>{{carrito.subtotal | number:'.2-2'}} €</span>
+      <span>{{subtotal | number:'.2-2'}} €</span>
     </p>
     <p class="descuentos">Descuentos:
-      <span>{{carrito.descuentos | number:'.2-2'}} €</span>
+      <span>{{descuentos | number:'.2-2'}} €</span>
     </p>
     <p class="total">Total:
-      <span>{{carrito.total | number:'.2-2'}} €</span>
+      <span>{{total | number:'.2-2'}} €</span>
     </p>
   </div>
 </div>

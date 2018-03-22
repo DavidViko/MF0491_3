@@ -1,7 +1,7 @@
 import { Producto } from "./producto";
 
 export class Carrito {
-    productos: Producto[]
+    productos: Producto[];
     numProductos: number;
     precio: number;
     subtotal:number;

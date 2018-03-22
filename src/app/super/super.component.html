@@ -16,16 +16,19 @@
     </div>
   </div>
   <div class="carrito col-xs-12 col-sm-2 col-md-2 col-lg-2">
-    <div class="dropdown">
-      <div class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-        <span class="badge">{{carrito.numProductos}}</span>
+    <div class="menuDesple">
+      <div (click)="mostrarCarrito()">
+        <span class="badge">{{numProductos}}</span>
         <i class="fa fa-shopping-basket fa-2x" aria-hidden="true"></i>
-        <span class="total-navegador">{{carrito.precio | number:'.2-2'}} €</span>
+        <span class="total-navegador">{{total | number:'.2-2'}} €</span>
       </div>
-      <div class="dropdown-menu">
+      <div id="desplegable" [ngClass]="visible?'visi':'invisi'">
 
-        <app-carrito [carrito]="carrito"></app-carrito> <!-- Elemento hijo carrito -->
-        
+        <app-carrito [carrito]="carrito" [total]=total [subtotal]=subtotal [descuentos]=descuentos (productoMas)="sumarCantidad($event)"
+          (productoMenos)="restarCantidad($event)" (productoBorrado)="quitarProdCarro($event)">
+        </app-carrito>
+        <!-- Elemento hijo carrito -->
+
         <div class="botonesCompra">
           <div class="vaciarCarrito" (click)="vaciarCarrito()">
             <span>VACIAR CESTA
@@ -49,7 +52,7 @@
   <h4>Listado de productos</h4>
   <div class="row">
     <div *ngFor="let producto of supermercado | filtroProd: searchText">
-      <div class="stock col-xs-12 col-sm-3 col-md-2">
+      <div class="stock col-xs-6 col-sm-3 col-md-2">
         <div class="thumbnail">
           <div [class]="(producto.oferta!=0)? 'iconoOferta' : 'precioOculto'">{{producto.oferta}}%</div>
           <img src={{producto.foto}} alt="{{producto.nombre}}">
@@ -63,7 +66,7 @@
           <!-- Botones añadir unidades del producto -->
           <div class="botones-cantidades btn-group" role="group">
             <button class="boton-cantidad" type="button" data-stepper-direction="down" (click)="restarCantidad(producto)">–</button>
-            <input size="4" type="number" pattern="[0-9]" min="0" max="999" value={{producto.cantidad}}>
+            <input size="4" type="number" pattern="[0-9]" min="0" max="999" value={{producto.cantidad}} readonly>
             <button class="boton-cantidad" data-stepper-direction="up" type="button" (click)="sumarCantidad(producto)">+</button>
           </div>
 

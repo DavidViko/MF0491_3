@@ -13,21 +13,52 @@ export class SuperComponent implements OnInit {
   supermercado: Producto[];
   prodSelec: Producto;
   searchText: string;
-  carrito: Carrito;
+  carrito: Producto[];
   precioConOferta: number;
-  cantidad: number;
+  precio: number;
+  numProductos: number;
+  subtotal: number;
+  descuentos: number;
+  total: number;
+  visible: boolean;
 
   constructor(public superService: SuperService) {
     console.log("Constructor Super");
     this.supermercado = [];
     this.prodSelec = new Producto('', 0);
-    this.carrito = new Carrito();
+    this.carrito = [];
+    this.numProductos = 0;
+
+    this.subtotal = 0;
+    this.descuentos = 0;
+    this.total = 0;
   }
 
   ngOnInit() {
     console.log('SuperComponent onInit');
     this.supermercado = this.superService.getAll();
     console.log('Array productos cargado');
+  }
+
+  calcularTotales() {
+    this.subtotal = 0;
+    this.descuentos = 0;
+    this.numProductos = 0;
+    this.carrito.forEach(element => {
+      this.numProductos = this.numProductos + element.cantidad;
+      this.subtotal = this.subtotal + element.precio * element.cantidad;
+      this.descuentos = this.descuentos + element.precio * element.oferta / 100;
+    });
+    this.total = this.subtotal - this.descuentos;
+  }
+
+
+  /**
+   * Incrementar la cantidad del producto
+   */
+  sumarCantidad(producto: Producto) {
+    producto.cantidad = producto.cantidad + 1;
+    this.calcularTotales();
   }
 
   /**
@@ -37,13 +68,19 @@ export class SuperComponent implements OnInit {
     if (producto.cantidad > 1) {
       producto.cantidad = producto.cantidad - 1;
     }
+    this.calcularTotales();
   }
 
   /**
-   * Incrementar la cantidad del producto
+   * Elimina el producto seleccionado del carrito
    */
-  sumarCantidad(producto: Producto) {
-    producto.cantidad = producto.cantidad + 1;
+  quitarProdCarro(idProdSelec: number) {
+    this.carrito.forEach((element, index) => {
+      if (element.id == idProdSelec) {
+        this.carrito.splice(index, 1);
+      }
+    });
+    this.calcularTotales();
   }
 
   /**
@@ -51,24 +88,36 @@ export class SuperComponent implements OnInit {
      * @param producto : se pasa el producto que se va a añadir al carrito
      */
   agregarCarrito(producto: Producto) {
+    let encontrado: boolean = false;
+    this.precioConOferta = producto.precio - (producto.precio * producto.oferta / 100);
+
     console.log('SupermercadoComponent agregarCarrito %o', producto);
-    this.carrito.productos.push(producto);
-    this.carrito.subtotal = this.carrito.subtotal + producto.precio * producto.cantidad;
-    this.carrito.numProductos = this.carrito.numProductos + producto.cantidad;
-    if (producto.oferta != 0) {
-      this.precioConOferta = producto.precio - (producto.precio * producto.oferta / 100);
-      this.carrito.precio = this.carrito.precio + this.precioConOferta * producto.cantidad;
-      this.carrito.descuentos = this.carrito.descuentos + producto.precio * producto.oferta / 100;
-    } else {
-      this.carrito.precio = this.carrito.precio + producto.precio * producto.cantidad;
+    if (this.carrito.length > 0) {
+      this.carrito.forEach(element => {
+        if (producto.id === element.id) {
+          encontrado = true;
+          element.cantidad = element.cantidad + producto.cantidad;
+        }
+      });
     }
-    this.carrito.total = this.carrito.subtotal - this.carrito.descuentos;
+    if (!encontrado) {
+      this.carrito.push(producto);
+    }
+    this.calcularTotales();
   }
 
-    // Vacío  carrito 
-    vaciarCarrito() {
-    this.carrito = new Carrito();
-    }
+  mostrarCarrito() {
+    this.visible = !this.visible;
+  }
+
+  // Vacío carrito 
+  vaciarCarrito() {
+    this.carrito = [];
+    this.subtotal = 0;
+    this.descuentos = 0;
+    this.numProductos = 0;
+    this.total = 0;
+  }
 
 }
 

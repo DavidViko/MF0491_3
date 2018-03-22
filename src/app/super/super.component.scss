@@ -18,17 +18,25 @@ nav{
         }
     }
 
-    .dropdown{
-        width:100%;
-    }
-
-    .dropdown-menu{
-        min-width:75vh;
-        left:-300px;
+    #desplegable{
+        min-width:40vw;
+        left:-26vw;
+        position: absolute;
+        top: 100%;
+        z-index: 1000;
+        float: left;
+        padding: 5px 0;
+        margin: 2px 0 0;
+        font-size: 14px;
+        text-align: left;
+        list-style: none;
+        background-color: #FFF;
+        box-shadow: 0 6px 12px rgba(0,0,0,.175);
     }
 
     .titulo{
         text-align: right;
+        padding-top: 10px;
         #titulo{
             color:rgb(175, 174, 174);
             font-size:1.5em;
@@ -41,7 +49,7 @@ nav{
     }
 
     .total-navegador{
-        margin: 0 20px;
+        margin-left: 15px;
     }
 
     .botonesCompra {
@@ -75,12 +83,12 @@ nav{
 
 .thumbnail {
     border: 1px solid #AAA;
-    height: 70vh;
+    height: 65vh;
     position: relative;
     padding: 5%;
     img {
         width: 100%;
-        height: 200px;
+        height: 35%;
     }
     .precioNormal {
         font-size: 1.5em;
@@ -144,4 +152,10 @@ nav{
         background-color: #DDD;
         border-radius: 50%;
     }
+}
+.invisi{
+    display:none;
+}
+.visi{
+    display:block;
 }

@@ -4,9 +4,7 @@
     text-align: right;
     font-size: 1em;
     margin-bottom: 10px;
-    &:hover {
-        background-color: rgb(184, 253, 184);
-    }
+    
     .item-right {
         font: #000;
     }
@@ -38,10 +36,30 @@
     }
     .precioNormal {
         font-size: 1.5em;
-        font-weight: 600;
     }
     .precioOculto {
         display: none;
+    }
+    .precioAntes {
+        position: relative;
+    }
+    .precioAntes:before {
+        position: absolute;
+        content: "";
+        left: 0;
+        top: 50%;
+        right: 0;
+        border-top: 1px solid;
+        border-color: red;
+        -webkit-transform: rotate(-10deg);
+        -moz-transform: rotate(-10deg);
+        -ms-transform: rotate(-10deg);
+        -o-transform: rotate(-10deg);
+        transform: rotate(-10deg);
+    }
+    .precioConOferta {
+        font-size: 1.2em;
+        color: red;
     }
     .badge {
         position: absolute;
@@ -62,12 +80,19 @@
         vertical-align: middle;
         background-color: #FFF;
     }
+
+    input[type=number]{
+        width:40%;
+        cursor: default;
+    }
     .boton-cantidad {
         background-color: #FFF;
         border-radius: 50%;
+        width:20%;
     }
     .btnEliminar{
         position: relative;
+        padding-top:10px;
         display:flex;
         align-items:center;
     }
